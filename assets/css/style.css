@@ -30,7 +30,7 @@ nav {
     transition: 0.5s;
 }
 
-/* NAVIGATION end */
+/* NAVIGATION end ----------------------------- */
 
 .center {
     text-align: center;
@@ -82,7 +82,27 @@ nav {
     color: gray;
 }
 
-/* LOGIN end */
+/* LOGIN end ----------------------------- */
+
+/* PROFILE */
+
+.profile-container {
+    width: 500px;
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    width: 20%;
+}
+
+/* PROFILE end ----------------------------- */
 
 body {
     margin-top: 100px;
@@ -117,7 +137,7 @@ body {
     font-size: 10pt;
 }
 
-/* NOTES end */
+/* NOTES end ----------------------------- */
 
 /* #7c1843 #bba6b9 #660d33*/
 

@@ -3,23 +3,20 @@ export default {
     data() {
         return {
             navItems: [
-                {ref:"GoToAllNotes", label: "All notes"}, 
-                {ref:"GoToMyProfile", label: "My profile"}
+                {ref:"goToAllNotes", label: "All notes"}, 
+                {ref:"goToMyProfile", label: "My profile"}
             ]
         }
     },
     methods: {
-        GoToAllNotes() {
-            this.$emit('GoToAllNotes')
-        },
-        GoToMyProfile() {
-            this.$emit('GoToMyProfile')
+        goTo(ref) {
+            this.$emit(ref)
         }
     },
     template: `
         <nav>
             <ul id="nav-ul">
-                <li class="nav-item" v-for="item in navItems" @click="item.ref">{{ item.label }}</li>
+                <li class="nav-item" v-for="item in navItems" @click="goTo(item.ref)">{{ item.label }}</li>
             </ul>
         </nav>
     `

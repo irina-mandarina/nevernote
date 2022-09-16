@@ -1,4 +1,4 @@
-// const app = Vue.createApp({
+// const dpp = Vue.createApp({
 export default {
     data() {
         return {
@@ -21,6 +21,8 @@ export default {
             this.showLogIn = false
         },
         goToMyProfile() {
+            this.showSignIn = false
+            this.showLogIn = false
             this.showAllNotes = false
             this.showMyProfile = true
         },
@@ -30,6 +32,7 @@ export default {
             this.showSignIn = false
             this.showAllNotes = false
             this.showMyProfile = false
+            this.username = "blank"
         },
         goToAllNotes() {
             this.showMyProfile = false
@@ -52,16 +55,19 @@ export default {
         
         <sign-in v-if="showSignIn && !registered" @log-in="logIn" @go-to-log-in="goToLogIn"></sign-in>
 
-        <div v-if="logged && showAllNotes">
+        <div v-if="logged">
 
             <navigation @go-to-all-notes="goToAllNotes" @go-to-my-profile="goToMyProfile"></navigation>
-            <h1 id="wellcome-msg">Wellcome {{ username }}</h1>
-            <div class="container">
-                <note-list :username="username"> </note-list>   
-            </div>
 
-            <profile v-if="showMyProfile" @log-out="logOut"></profile>
-            
+            <profile :username="username" v-if="showMyProfile" @log-out="logOut"></profile>
+
+            <div v-if="showAllNotes">
+                <h1 id="wellcome-msg">Wellcome {{ username }}</h1>
+                <div class="container">
+                    <note-list :username="username"> </note-list>   
+                </div>
+            </div>    
         </div>
+        
     `
 }
