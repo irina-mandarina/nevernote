@@ -1,0 +1,173 @@
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* NAVIGATION */
+nav {
+    top: 0px;
+    position: fixed;
+    width: 100%;
+    font-size: 18pt;
+}
+
+#nav-ul {
+    list-style-type: none;
+    white-space:nowrap;
+}
+
+.nav-item {
+    position: relative;
+    float: inline-start;
+    padding: 20px 10px;
+    text-decoration: none;
+    display: inline;
+    text-decoration: none;
+    color: gray;
+}
+
+.nav-item:hover {
+    color: #a0144f;
+    transition: 0.5s;
+}
+
+/* NAVIGATION end */
+
+.center {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+/* SIGN IN */
+.sign-in-container {
+    width: 500px;
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    align-items: center;
+    text-align: center;
+}
+
+.sign-in-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    width: 20%;
+}
+
+.transparent-button {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+/* LOG IN */
+.login-container {
+    width: 500px;
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    align-items: center;
+    text-align: center;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.login-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    width: 20%;
+}
+
+.login-input {
+    color: gray;
+}
+
+/* LOGIN end */
+
+body {
+    margin-top: 100px;
+    display: block;
+}
+
+#wellcome-msg {
+    width:500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* NOTES */
+
+.notes-container {
+    margin: auto;
+    padding: 50px;
+    height: 200px;
+}
+
+.note-container {
+    display: inline-block;
+    width: 30%;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.note-timestamp {
+    font-style: italic;
+    font-size: 10pt;
+}
+
+/* NOTES end */
+
+/* #7c1843 #bba6b9 #660d33*/
+
+input, textarea {
+    border: 1px solid #bba6b9;
+    box-shadow: rgba(0, 0, 0, 0.05) 1.95px 1.95px 2.6px;
+    border-radius: 8px;
+    margin: 10px;
+    height: 25px;
+    padding: 10px;
+    letter-spacing: 1px;
+}
+
+textarea {
+    /* resize: vertical; */
+    max-width: 80%; 
+    max-height: 100%;
+}
+
+.text-input {
+    width: 70%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button {
+    border: none;
+}
+
+.button {
+    border-radius: 10px;
+    margin: 5px;
+    box-shadow: rgba(0, 0, 0, 0.05) 1.95px 1.95px 2.6px;
+    background-color: #a0144f;
+    color: white;
+    font-weight: bolder;
+    font-size: 10pt;
+    letter-spacing: 1px;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #530b2a;
+    transition: all 0.5s;
+}
+
+.note-options {
+    background-color: white;
+    color: #a0144f;
+    display: inline;
+    float: right;
+    font-size: 15pt;
+}
