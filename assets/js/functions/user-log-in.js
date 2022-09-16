@@ -1,7 +1,10 @@
 export function validLoginInfo(username, password) {
     var userInfo = JSON.parse(localStorage.getItem("user-" + username))
-    if (userInfo.password === password) {
-        return true
+    if (userInfo === null) {
+        return "Unknown username"
     }
-    return false
+    if (userInfo.password === password) {
+        return "1"
+    }
+    return "Wrong password"
 }

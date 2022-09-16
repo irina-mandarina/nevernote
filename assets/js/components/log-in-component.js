@@ -3,15 +3,18 @@ import {validLoginInfo, } from '../functions/user-log-in.js';
 export default {
     data() {
         return {
-            // name: "Name",
             username: "Your username",
             password: "Password"
         }   
     },
     methods: {
         checkLoginInfo({username, password}) {
-            if (validLoginInfo(username, password)) {
-                this.$emit('logIn', {username, password})   
+            if (validLoginInfo(username, password) === "1") {
+                this.username = username
+                this.$emit('logIn', {username: this.username})   
+            }
+            else {
+                toastr["error"](validLoginInfo(username, password))
             }
         },
         goToSignIn() {
@@ -25,7 +28,7 @@ export default {
                 <br>
                 <input type="text" class="login-input" v-model="username" v-bind:placeholder="username">
                 <br>
-                <input type="text" class="login-input" v-model="password" v-bind:placeholder="password">
+                <input type="password" class="login-input" v-model="password" v-bind:placeholder="password">
                 <br>
                 <button class="button login-button" @click="checkLoginInfo({username, password})">Log in</button>
                 

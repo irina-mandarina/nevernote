@@ -13,7 +13,7 @@ export default {
     },
     methods: {
         logIn(username) {
-            this.username = username
+            this.username = username.username
             this.logged = true
             this.showAllNotes = true
             this.showSignIn = false

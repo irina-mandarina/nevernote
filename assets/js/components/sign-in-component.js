@@ -12,17 +12,17 @@ export default {
     },
     methods: {
         registerUser({name, age, address, username, password}) {
-            if (age < 16) {
-                alert("You must be at least 16!")
+            if (age < 10) {
+                toastr["error"]("You must be at least 10yo to register.")
             }
             else if (!isValidUsername(username)) {
-                alert("username contains invalid characters")
+                toastr["error"]("The username you enterered contains invalid characters.")
             }
             else if (isTaken(username)) {
-                alert("username is already taken")
+                toastr["error"]("This username is already taken.")
             }
             else if (!isValidPassword(password)) {
-                alert("The entered password is not valid. Use at least 4 characters and 1 number.")
+                toastr["error"]("The entered password is not valid. Use at least 4 characters and 1 number.")
             }
             else {
                 // localStorage.setItem('user-' + username, JSON.stringify({name: name, age: age, address: address, username: username, password: password}));
