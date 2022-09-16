@@ -3,8 +3,8 @@ import {validLoginInfo, } from '../functions/user-log-in.js';
 export default {
     data() {
         return {
-            username: "Your username",
-            password: "Password"
+            username: "viki",
+            password: "viki1"
         }   
     },
     methods: {

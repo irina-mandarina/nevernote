@@ -9,7 +9,13 @@ export function isTaken(username) {
     for(let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i)
         if (key.includes("user-")) {
-            let userInfo = JSON.parse(localStorage.getItem(key))
+            let userInfo
+            try {
+                userInfo = JSON.parse(localStorage.getItem(key))
+            }
+            catch (e) {
+                console.log(e)
+            }
             if (userInfo.username === username) {
                return true
             }

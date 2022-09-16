@@ -1,6 +1,8 @@
 // NoteAdderComponent
-//import {saveNote} from '../functions/save-note.js';
 export default {
+    props: [
+        'username'
+    ],
     data () {
         return {
             title: "A new note",
@@ -15,7 +17,7 @@ export default {
             let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
             let dateTime = date + ' ' + time
             this.date = dateTime
-            this.$emit('emitAppendNewNote', {title, content, date: dateTime})
+            this.$emit('saveNote', {title, content, date: dateTime})
         }
     },
     template: `

@@ -1,5 +1,5 @@
 // NoteListComponent
-// import {saveNote} from '../functions/save-note.js';
+import {saveNote, updatedNoteList, deleteNoteFromStorage, updatedNoteCount} from '../functions/save-note.js';
 export default {
     props: [
         'username'
@@ -7,25 +7,30 @@ export default {
     data() {
         return {
             notes: [
-                {id: 0, title: "First note", content: "This is a note.", date: "13.09.2022"}
+                
             ],
-            noteCount: 1
+            noteCount: 0
         }
     },
+    created() {
+        this.notes = updatedNoteList(this.username)
+    },
     methods: {
-        handleAppendNewNote({title, content, date}) {
-            this.notes.push({id: this.noteCount, title, content, date})
-            // saveNote(noteCount, username, title, content, date)
-            noteCount++
+        handleSaveNote({title, content, date}) {
+            saveNote(this.username, title, content, date)
+            this.noteCount = updatedNoteCount(this.username)
+            this.notes = updatedNoteList(this.username)
         },
         deleteNoteFromList(id) {
-            this.notes = this.notes.filter((note) => note.id !== id)
+            //this.notes = this.notes.filter((note) => note.id !== id)
+            deleteNoteFromStorage(id)
+            this.notes = updatedNoteList(this.username)
         }
     },
     template: `
         <div id="notes" class="notes-container">
             <h3> Your notes </h3>
-            <note-adder @emit-append-new-note="handleAppendNewNote"></note-adder>
+            <note-adder :username="username" @save-note="handleSaveNote"></note-adder>
             <note v-for="note in notes" :id="note.id" :title="note.title" :content="note.content" :date="note.date" @delete-note="deleteNoteFromList"></note>
         </div>
     `

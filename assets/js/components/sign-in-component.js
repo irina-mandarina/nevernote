@@ -25,7 +25,6 @@ export default {
                 toastr["error"]("The entered password is not valid. Use at least 4 characters and 1 number.")
             }
             else {
-                // localStorage.setItem('user-' + username, JSON.stringify({name: name, age: age, address: address, username: username, password: password}));
                 saveUserInfo(name, age, address, username, password)
                 this.$emit('logIn', {username, password})
             }
