@@ -9,16 +9,20 @@ export default {
     },
     methods: {
         checkLoginInfo({username, password}) {
-            if (validLoginInfo(username, password) === "1") {
-                this.username = username
-                this.$emit('logIn', {username: this.username})   
+            // if (validLoginInfo(username, password) === "1") {
+            //     this.username = username
+            //     this.$emit('logIn', {username: this.username})   
+            // }
+            // else {
+            //     toastr["error"](validLoginInfo(username, password))
+            // }
+            try {
+                validLoginInfo(username, password)
             }
-            else {
-                toastr["error"](validLoginInfo(username, password))
+            catch (e) {
+                toastr["error"](e.message)
             }
-        },
-        goToSignIn() {
-            this.$emit('goToSignIn')
+            this.$emit('logIn', {username: this.username})
         }
     },
     template: `
@@ -34,7 +38,7 @@ export default {
                 
                 <br>
                 <button class="transparent-button">
-                    <h4 @click="goToSignIn">
+                    <h4 @click="this.$emit('goToSignIn')">
                         I don't have an account yet.
                     </h4>
                 </button>

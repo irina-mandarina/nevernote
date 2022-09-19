@@ -2,71 +2,55 @@
 export default {
     data() {
         return {
-            username: "blank",
+            username: null,
             logged: false,
-            registered: true,
-            showMyProfile: false,
-            showAllNotes: false,
-            showLogIn: true,
-            showSignIn: false
+            views: [ // component combinations
+                'logIn',
+                'signIn',
+                'profile',
+                'noteList'
+            ],
+            showView: 0
         }
     },
     methods: {
         logIn(username) {
+            this.logged = true;
             this.username = username.username
-            this.logged = true
-            this.showAllNotes = true
-            this.showSignIn = false
-            this.showMyProfile = false
-            this.showLogIn = false
+            this.displayComponent('noteList')
         },
-        goToMyProfile() {
-            this.showSignIn = false
-            this.showLogIn = false
-            this.showAllNotes = false
-            this.showMyProfile = true
+        displayComponent(comp) {
+            for (let viewIndex = 0; viewIndex < this.views.length; viewIndex++) {
+                if (this.views[viewIndex] === comp) {
+                    this.showView = viewIndex
+                }
+            }
+        },
+        shouldDisplay(comp) {
+            for (let viewIndex = 0; viewIndex < this.views.length; viewIndex++) {
+                if (this.views[viewIndex] === comp) {
+                    return viewIndex === this.showView
+                }
+            }
         },
         logOut() {
             this.logged = false
-            this.showLogIn = true
-            this.showSignIn = false
-            this.showAllNotes = false
-            this.showMyProfile = false
-            this.username = "blank"
-        },
-        goToAllNotes() {
-            this.showMyProfile = false
-            this.showAllNotes = true
-        },
-        goToLogIn() {
-            this.showSignIn = false
-            this.showLogIn = true
-            this.logged = false
-        },
-        goToSignIn() {
-            this.showSignIn = true
-            this.showLogIn = false
-            this.logged = false
-            this.registered = false
+            this.username = null
+            this.displayComponent('logIn')
         }
     },
     template: `
-        <log-in v-if="showLogIn" @log-in="logIn" @go-to-sign-in="goToSignIn"></log-in>
+        <log-in v-if="shouldDisplay('logIn')" @log-in="logIn" @go-to-sign-in="displayComponent('signIn')"></log-in>
         
-        <sign-in v-if="showSignIn && !registered" @log-in="logIn" @go-to-log-in="goToLogIn"></sign-in>
+        <sign-in v-if="shouldDisplay('signIn')" @log-in="logIn" @go-to-log-in="displayComponent('logIn')"></sign-in>
 
         <div v-if="logged">
 
-            <navigation @go-to-all-notes="goToAllNotes" @go-to-my-profile="goToMyProfile"></navigation>
+            <navigation @go-to-all-notes="displayComponent('noteList')" @go-to-my-profile="displayComponent('profile')"></navigation>
 
-            <profile :username="username" v-if="showMyProfile" @log-out="logOut"></profile>
+            <profile :username="username" v-if="shouldDisplay('profile')" @log-out="logOut"></profile>
 
-            <div v-if="showAllNotes">
-                <h1 id="wellcome-msg">Wellcome {{ username }}</h1>
-                <div class="container">
-                    <note-list :username="username"> </note-list>   
-                </div>
-            </div>    
+            <note-list v-if="shouldDisplay('noteList')" :username="username"></note-list>  
         </div>
         
     `

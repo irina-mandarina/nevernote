@@ -1,6 +1,9 @@
 
 var userObj = {}
 function getUserInfo(username) {
+    if (userObj === {}) {
+        return userObj
+    }
     for(let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i)
         if (key.startsWith("user-")) {
@@ -26,4 +29,14 @@ export function getName(username) {
 export function getAge(username) {
     getUserInfo(username)
     return userObj.age
+}
+
+export function getAddress(username) {
+    getUserInfo(username)
+    return userObj.address
+}
+
+export function getPassword(username) {
+    getUserInfo(username)
+    return userObj.password
 }

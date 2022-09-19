@@ -28,10 +28,13 @@ export default {
         }
     },
     template: `
-        <div id="notes" class="notes-container">
-            <h3> Your notes </h3>
-            <note-adder :username="username" @save-note="handleSaveNote"></note-adder>
-            <note v-for="note in notes" :id="note.id" :title="note.title" :content="note.content" :date="note.date" @delete-note="deleteNoteFromList"></note>
+        <h1 id="wellcome-msg">Wellcome {{ username }}</h1>
+        <div class="container">
+            <div id="notes" class="notes-container">
+                <h3> Your notes </h3>
+                <note-adder :username="username" @save-note="handleSaveNote"></note-adder>
+                <note v-for="note in notes" :id="note.id" :title="note.title" :content="note.content" :date="note.date" @delete-note="deleteNoteFromList"></note>
+            </div>
         </div>
     `
 }

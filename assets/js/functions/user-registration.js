@@ -7,7 +7,7 @@ export function isValidUsername(username) {
 
 export function isTaken(username) {
     for(let i = 0; i < localStorage.length; i++) {
-        let key = localStorage.key(i)
+        const key = localStorage.key(i)
         if (key.includes("user-")) {
             let userInfo
             try {
@@ -25,8 +25,7 @@ export function isTaken(username) {
 }
 
 export function isValidPassword(password) {
-    var hasNumber = /\d/
-    if (hasNumber.test(password)) {
+    if (/\d/.test(password)) {
         if (password.length >= 4) {
             return true
         }

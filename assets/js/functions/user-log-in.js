@@ -3,13 +3,13 @@ export function validLoginInfo(username, password) {
         var userInfo = JSON.parse(localStorage.getItem("user-" + username))
     }
     catch (e) {
-        return "Exception"
+        return "Exception during trying to parse " + username + ": " + e
     }
     if (userInfo === null) {
-        return "Unknown username"
+        throw "Unknown username"
     }
     if (userInfo.password === password) {
-        return "1"
+        return
     }
-    return "Wrong password"
+    throw "Wrong password"
 }

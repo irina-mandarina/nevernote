@@ -34,7 +34,7 @@ export default {
         }
     },
     template: `
-            <div class="center">
+        <div class="center">
             <div class="sign-in-container">
                 <img class="sign-in-img" src="assets/images/login_img.png"/>
                 <br>
