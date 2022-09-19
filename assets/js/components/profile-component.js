@@ -21,11 +21,8 @@ export default {
         <div class="center">
             <div class="profile-container">
                 <img class="profile-img" src="assets/images/login_img.png"/>
-                <br>
                 <h1> Hello, {{ name }}! </h1>
                 <p v-bind:placeholder="username"> {{ username }} </p>
-                <br>
-                <br>
                 <button class="button" @click="LogOut({username, password})">Log out</button>
             </div>
         </div>

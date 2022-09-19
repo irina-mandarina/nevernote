@@ -24,9 +24,7 @@ export default {
         <div id="create-note" class="note-container">
             <div>
                 <input v-model="title" type="text" v-bind:placeholder="title">
-                <br>
                 <textarea v-model="content" type="text" class="text-input" v-bind:placeholder="content"> </textarea>
-                <br>
                 <button class="button" @click="addNote({title, content})">Add to notes</button>
             </div>
         </div>

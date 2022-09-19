@@ -48,6 +48,12 @@ nav {
     text-align: center;
 }
 
+.sign-in-input, .login-input {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .sign-in-img {
     display: block;
     margin-left: auto;
@@ -56,6 +62,9 @@ nav {
 }
 
 .transparent-button {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
     background-color: rgba(255, 255, 255, 0);
 }
 
@@ -164,6 +173,9 @@ textarea {
 
 button {
     border: none;
+    /* display: flex;
+    margin-right: auto;
+    margin-left: auto; */
 }
 
 .button {

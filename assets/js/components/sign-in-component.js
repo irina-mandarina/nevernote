@@ -37,20 +37,12 @@ export default {
         <div class="center">
             <div class="sign-in-container">
                 <img class="sign-in-img" src="assets/images/login_img.png"/>
-                <br>
                 <input type="text" class="sign-in-input" v-model="name" v-bind:placeholder="name">
-                <br>
                 <input type="number" class="sign-in-input" v-model="age" v-bind:placeholder="age">
-                <br>
                 <input type="text" class="sign-in-input" v-model="address" v-bind:placeholder="address">
-                <br>
                 <input type="text" class="sign-in-input" v-model="username" v-bind:placeholder="username">
-                <br>
                 <input type="password" class="sign-in-input" v-model="password" v-bind:placeholder="password">
-                <br>
                 <button class="button sign-in-button" @click="registerUser({name, age, address, username, password})">Sign in</button>
-
-                <br>
                 <button class="transparent-button">
                     <h4 @click="goToLogIn">
                         I already have an account.
