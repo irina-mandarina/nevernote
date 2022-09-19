@@ -1,5 +1,5 @@
 // NoteListComponent
-import {saveNote, updatedNoteList, deleteNoteFromStorage, updatedNoteCount} from '../functions/save-note.js';
+import {saveNote, getNoteCount, deleteNoteFromStorage, getNoteList} from '../functions/save-note.js';
 export default {
     props: [
         'username'
@@ -13,18 +13,21 @@ export default {
         }
     },
     created() {
-        this.notes = updatedNoteList(this.username)
+        this.notes = getNoteList(this.username)
+        this.noteCount = getNoteCount
     },
     methods: {
         handleSaveNote({title, content, date}) {
             saveNote(this.username, title, content, date)
-            this.noteCount = updatedNoteCount(this.username)
-            this.notes = updatedNoteList(this.username)
+            this.noteCount++
+            this.notes.push({id: this.noteCount, title, content, date})
+            // this.noteCount = updatedNoteCount(this.username)
+            // this.notes = updatedNoteList(this.username)
         },
         deleteNoteFromList(id) {
-            //this.notes = this.notes.filter((note) => note.id !== id)
+            this.notes = this.notes.filter((note) => note.id !== id)
             deleteNoteFromStorage(id)
-            this.notes = updatedNoteList(this.username)
+            // this.notes = updatedNoteList(this.username)
         }
     },
     template: `

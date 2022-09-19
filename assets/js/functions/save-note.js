@@ -9,7 +9,8 @@ export function saveNote(username, title, content, date) {
     localStorage.setItem('note-' + allNotesCount, JSON.stringify({id: allNotesCount, user: username, title: title, content: content, date: date}));
 }
 
-export function updatedNoteList(username) {
+var noteCount = 0
+export function getNoteList(username) {
     let noteList = []
     for(let i = 0; i < localStorage.length; i++) {
         let key = localStorage.key(i)
@@ -17,35 +18,20 @@ export function updatedNoteList(username) {
             let noteInfo
             try {
                 noteInfo = JSON.parse(localStorage.getItem(key))
+                if (noteInfo.user === username) {
+                    noteList.push(noteInfo)
+                    noteCount++
+                }
             }
             catch (e) {
                 console.log(e)
-            }
-            if (noteInfo.user === username) {
-                noteList.push(noteInfo)
             }
         }
     }
     return noteList
 }
 
-export function updatedNoteCount(username) {
-    let noteCount = 0
-    for(let i = 0; i < localStorage.length; i++) {
-        let key = localStorage.key(i)
-        if (key.startsWith("note-")) {
-            let noteInfo
-            try {
-                noteInfo = JSON.parse(localStorage.getItem(key))
-            }
-            catch (e) {
-                console.log(e)
-            }
-            if (noteInfo.username === username) {
-               noteCount++
-            }
-        }
-    }
+export function getNoteCount(username) {
     return noteCount
 }
 
