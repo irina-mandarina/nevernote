@@ -1,7 +1,7 @@
 
-var userObj = {}
+var userObj = null
 function getUserInfo(username) {
-    if (userObj === {}) {
+    if (userObj !== null) {
         return userObj
     }
     for(let i = 0; i < localStorage.length; i++) {
@@ -18,7 +18,7 @@ function getUserInfo(username) {
             }
         }
     }
-    return "Problem"
+    throw "Problem while looking for username: " + username
 }
 
 export function getName(username) {

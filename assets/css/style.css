@@ -39,7 +39,7 @@ nav {
 }
 
 /* SIGN IN */
-.sign-in-container {
+.sign-up-container {
     width: 500px;
     border-radius: 20px;
     padding: 50px;
@@ -48,13 +48,13 @@ nav {
     text-align: center;
 }
 
-.sign-in-input, .login-input {
+.sign-up-input, .login-input {
     display: flex;
     margin-left: auto;
     margin-right: auto;
 }
 
-.sign-in-img {
+.sign-up-img {
     display: block;
     margin-left: auto;
     margin-right: auto; 

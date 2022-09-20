@@ -2,15 +2,10 @@
 import {getName} from '../functions/user-info.js'
 export default {
     props: [
-        'username'
+        'username',
+        'name'
     ],
     data() {
-        return {
-            name: "blank"
-        }
-    },
-    created() {
-        this.name = getName(this.username)
     },
     methods: {
         LogOut() {

@@ -1,56 +1,44 @@
+import { getName, getAge, getAddress } from "../functions/user-info.js";
+
 // const dpp = Vue.createApp({
 export default {
     data() {
         return {
             username: null,
+            name: null,
+            age: null,
+            address: null,
             logged: false,
-            views: [ // component combinations
-                'logIn',
-                'signIn',
-                'profile',
-                'noteList'
-            ],
-            showView: 0
+            showView: 'logIn'
         }
     },
     methods: {
         logIn(username) {
             this.logged = true;
             this.username = username.username
-            this.displayComponent('noteList')
-        },
-        displayComponent(comp) {
-            for (let viewIndex = 0; viewIndex < this.views.length; viewIndex++) {
-                if (this.views[viewIndex] === comp) {
-                    this.showView = viewIndex
-                }
-            }
-        },
-        shouldDisplay(comp) {
-            for (let viewIndex = 0; viewIndex < this.views.length; viewIndex++) {
-                if (this.views[viewIndex] === comp) {
-                    return viewIndex === this.showView
-                }
-            }
+            this.showView = 'noteList'
+            this.name = getName(this.username)
+            this.age = getAge(this.username)
+            this.address = getAdress(this.username)
         },
         logOut() {
             this.logged = false
             this.username = null
-            this.displayComponent('logIn')
+            this.showView = 'logIn'
         }
     },
     template: `
-        <log-in v-if="shouldDisplay('logIn')" @log-in="logIn" @go-to-sign-in="displayComponent('signIn')"></log-in>
+        <log-in v-if="showView === 'logIn'" @log-in="logIn" @go-to-sign-up="this.showView = 'signUp'"></log-in>
         
-        <sign-in v-if="shouldDisplay('signIn')" @log-in="logIn" @go-to-log-in="displayComponent('logIn')"></sign-in>
+        <sign-up v-if="showView === 'signUp'" @log-in="logIn" @go-to-log-in="this.showView = 'logIn'"></sign-up>
 
         <div v-if="logged">
 
-            <navigation @go-to-all-notes="displayComponent('noteList')" @go-to-my-profile="displayComponent('profile')"></navigation>
+            <navigation @go-to-all-notes="this.showView = 'noteList'" @go-to-my-profile="this.showView = 'profile'"></navigation>
 
-            <profile :username="username" v-if="shouldDisplay('profile')" @log-out="logOut"></profile>
+            <profile :name="name" :username="username" v-if="showView === 'profile'" @log-out="logOut"></profile>
 
-            <note-list v-if="shouldDisplay('noteList')" :username="username"></note-list>  
+            <note-list v-if="showView === 'noteList'" :username="username"></note-list>  
         </div>
         
     `

@@ -1,5 +1,5 @@
 import App from './components/app.js'
-import SignInComponent from './components/sign-in-component.js'
+import SignUpComponent from './components/sign-up-component.js'
 import LogInComponent from './components/log-in-component.js'
 import ProfileComponent from './components/profile-component.js'
 import NavigationComponent from './components/navigation-component.js'
@@ -8,7 +8,7 @@ import NoteAdderComponent from './components/note-adder-component.js'
 import NoteListComponent from './components/note-list-component.js'
 
 const app = Vue.createApp(App)
-app.component('SignIn', SignInComponent);
+app.component('SignUp', SignUpComponent);
 app.component('LogIn', LogInComponent);
 app.component('Profile', ProfileComponent);
 app.component('Navigation', NavigationComponent);

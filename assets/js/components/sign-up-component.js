@@ -35,14 +35,14 @@ export default {
     },
     template: `
         <div class="center">
-            <div class="sign-in-container">
-                <img class="sign-in-img" src="assets/images/login_img.png"/>
-                <input type="text" class="sign-in-input" v-model="name" v-bind:placeholder="name">
-                <input type="number" class="sign-in-input" v-model="age" v-bind:placeholder="age">
-                <input type="text" class="sign-in-input" v-model="address" v-bind:placeholder="address">
-                <input type="text" class="sign-in-input" v-model="username" v-bind:placeholder="username">
-                <input type="password" class="sign-in-input" v-model="password" v-bind:placeholder="password">
-                <button class="button sign-in-button" @click="registerUser({name, age, address, username, password})">Sign in</button>
+            <div class="sign-up-container">
+                <img class="sign-up-img" src="assets/images/login_img.png"/>
+                <input type="text" class="sign-up-input" v-model="name" v-bind:placeholder="name">
+                <input type="number" class="sign-up-input" v-model="age" v-bind:placeholder="age">
+                <input type="text" class="sign-up-input" v-model="address" v-bind:placeholder="address">
+                <input type="text" class="sign-up-input" v-model="username" v-bind:placeholder="username">
+                <input type="password" class="sign-up-input" v-model="password" v-bind:placeholder="password">
+                <button class="button sign-up-button" @click="registerUser({name, age, address, username, password})">Sign up</button>
                 <button class="transparent-button">
                     <h4 @click="goToLogIn">
                         I already have an account.
